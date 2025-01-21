@@ -1,0 +1,360 @@
+print("██████╗░███████╗░█████╗░██████╗░███████╗██████╗░  ██╗░░██╗██╗░░░██╗██████╗░")
+wait(0.5)
+print("██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗  ██║░░██║██║░░░██║██╔══██╗")
+wait(0.5)
+print("██████╔╝█████╗░░███████║██████╔╝█████╗░░██████╔╝  ███████║██║░░░██║██████╦╝")
+wait(0.5)
+print("██╔══██╗██╔══╝░░██╔══██║██╔═══╝░██╔══╝░░██╔══██╗  ██╔══██║██║░░░██║██╔══██╗")
+wait(0.5)
+print("██║░░██║███████╗██║░░██║██║░░░░░███████╗██║░░██║  ██║░░██║╚██████╔╝██████╦╝")
+wait(0.5)
+print("╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═╝░░╚═╝  ╚═╝░░╚═╝░╚═════╝░╚═════╝░")
+wait(0.5)
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "💀Reaper Hub💀",
+   LoadingTitle = "Do not let the reaper get to you",
+   LoadingSubtitle = "by ReapSeek",
+   Theme = "Amethyst", -- Check https://[Log in to view URL]
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Reap.EXE"
+   },
+
+   Discord = {
+      Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "MCDWSUPwb3", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "ReaperHub | Key",
+      Subtitle = "Key at discord server",
+      Note = "Join the server and find key tab", -- Use this to tell the user how to get a key
+      FileName = "ReaperHub | Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"https://pastebin.com/raw/bRDJeSia"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("💀🏠", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+	Title = "You Did It!!! Get Hacked!!!",
+	Content = "Just Kidding!!!😁",
+	Duration = 5,
+	Image = 7713734565,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "Not Funny!🤬",
+			Callback = function()
+				print("The user hopefully trust's us!")
+			end
+		},
+	},
+})
+
+local Button = MainTab:CreateButton({
+    Name = "Toggle Infinite Jump😬",
+    Callback = function()
+        -- Toggle infinite jump
+        if _G.InfiniteJumpEnabled then
+            _G.InfiniteJumpEnabled = false
+            print("Infinite Jump Disabled")
+        else
+            _G.InfiniteJumpEnabled = true
+            print("Infinite Jump Enabled")
+        end
+    end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Esp😳",
+   Callback = function()
+        local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source",true))()
+local Window = OrionLib:MakeWindow({Name = "Universal ESP", HidePremium = true, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "ESP",
+	Icon = "nil",
+	PremiumOnly = false
+})
+getgenv().esp = false
+getgenv().teamcheck = false
+getgenv().Color = Color3.fromRGB(255, 0, 0)
+Tab:AddToggle({
+	Name = "ESP",
+	Default = false,
+	Callback = function(Value)
+		getgenv().esp = Value
+		spawn(function()
+		while wait() do
+		    if not getgenv().esp then
+		          for i,v in pairs(game.Players:GetChildren()) do
+		              if v.Character and v.Character:FindFirstChild("Highlight") then
+		                  local Highlight = v.Character:FindFirstChild("Highlight")
+		                  Highlight.Enabled = false
+    		      end
+		      end 
+		      else
+		          for i,v in pairs(game.Players:GetChildren()) do
+		             if getgenv().teamcheck == true then
+		               if v.Character and v ~= game.Players.LocalPlayer and v.TeamColor ~= game.Players.LocalPlayer.TeamColor then
+    		                 if v.Character:FindFirstChild("Highlight") then
+    		                 local Highlight = v.Character:FindFirstChild("Highlight") 
+    		                 Highlight.Enabled = true
+    		                 Highlight.FillColor = getgenv().Color
+    		                 Highlight.Adornee = v.Character
+    		                 else
+    		                 local Highlight = Instance.new("Highlight",v.Character)
+    		                 Highlight.Enabled = true
+    		                 Highlight.FillColor = getgenv().Color
+    		                 Highlight.Adornee = v.Character
+    		              end       
+    		           end  
+		                if v.TeamColor == game.Players.LocalPlayer.TeamColor then
+    		              if v.Character and v.Character:FindFirstChild("Highlight") then
+    		                  local Highlight = v.Character:FindFirstChild("Highlight")
+        		              Highlight.Enabled = false
+        		          end    
+    		            end 
+    		          else
+    		              if v.Character and v ~= game.Players.LocalPlayer then
+    		                 if v.Character:FindFirstChild("Highlight") then
+    		                 local Highlight = v.Character:FindFirstChild("Highlight") 
+    		                 Highlight.Enabled = true
+    		                 Highlight.FillColor = getgenv().Color
+    		                 Highlight.Adornee = v.Character
+    		                 else
+    		                 local Highlight = Instance.new("Highlight",v.Character)
+    		                 Highlight.Enabled = true
+    		                 Highlight.FillColor = getgenv().Color
+    		                 Highlight.Adornee = v.Character
+    		              end       
+    		           end    
+		            end       
+		      end    
+		    end  
+		end    
+		end)
+	end    
+})
+Tab:AddColorpicker({
+	Name = "Esp Color",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		getgenv().Color = Value
+	end	  
+})
+Tab:AddToggle({
+	Name = "Teamcheck",
+	Default = false,
+	Callback = function(Value)
+		getgenv().teamcheck = Value
+	end    
+})
+Tab:AddToggle({
+	Name = "Rainbow ESP",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Rainbow = Value
+		while wait() do
+		    if not getgenv().Rainbow then return end
+		    getgenv().Color = Color3.new(148, 0, 211)
+		    wait()
+		    getgenv().Color = Color3.new(75, 0, 130)
+		    wait()
+		    getgenv().Color = Color3.new(0, 0, 255)
+		    wait()
+		    getgenv().Color = Color3.new(0, 255, 0)
+		    wait()
+		    getgenv().Color = Color3.new(255, 255, 0)
+		    wait()
+		    getgenv().Color = Color3.new(255, 127, 0)
+		    wait()
+		    getgenv().Color = Color3.new(255, 0 , 0)
+		    wait()
+		end    
+	end    
+})
+   end,
+})
+
+-- Infinite jump functionality
+_G.InfiniteJumpEnabled = false
+
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if _G.InfiniteJumpEnabled then
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end)
+
+local Slider = MainTab:CreateSlider({
+    Name = "WalkSpeed Slider😬",
+    Range = {0, 1000},
+    Increment = 1,
+    Suffix = "Speed",
+    CurrentValue = 16,
+    Flag = "Slider1", -- Ensure unique flag names
+    Callback = function(Value)
+        -- Store the new slider value in a variable
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+        
+        -- Set the WalkSpeed whenever the slider changes
+        humanoid.WalkSpeed = Value
+    end,
+})
+
+-- Loop to ensure WalkSpeed stays at the slider's value
+task.spawn(function()
+    while true do
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+
+        -- Get the current slider value from the slider's flag
+        local sliderValue = Slider.CurrentValue
+        humanoid.WalkSpeed = sliderValue
+
+        -- Wait a short interval to avoid performance issues
+        task.wait(0.1)
+    end
+end)
+
+local Slider = MainTab:CreateSlider({
+    Name = "JumpPower Slider😬",
+    Range = {0, 1000}, -- Adjust range as needed
+    Increment = 1,
+    Suffix = "Power",
+    CurrentValue = 50, -- Default JumpPower value
+    Flag = "Slider2", -- Unique flag for this slider
+    Callback = function(Value)
+        -- Store the new slider value in a variable
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+        
+        -- Set the JumpPower whenever the slider changes
+        humanoid.JumpPower = Value
+    end,
+})
+
+-- Loop to ensure JumpPower stays at the slider's value
+task.spawn(function()
+    while true do
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+
+        -- Get the current slider value from the slider's flag
+        local sliderValue = Slider.CurrentValue
+        humanoid.JumpPower = sliderValue
+
+        -- Wait a short interval to avoid performance issues
+        task.wait(0.1)
+    end
+end)
+
+local Slider = MainTab:CreateSlider({
+    Name = "FOV Slider😳",
+    Range = {70, 120}, -- Adjustable range for FOV (default Roblox FOV is 70-120)
+    Increment = 1, -- Change in increments of 1
+    Suffix = "FOV",
+    CurrentValue = 70, -- Default FOV value
+    Flag = "SliderFOV", -- Unique identifier for configuration saving
+    Callback = function(Value)
+        -- Set the FOV to the slider's value
+        local player = game.Players.LocalPlayer
+        local camera = workspace.CurrentCamera
+
+        if camera then
+            camera.FieldOfView = Value
+        end
+    end,
+})
+
+local AdminTab = Window:CreateTab("💀ADMIN💀", nil) -- Title, Image
+local AdminSection = AdminTab:CreateSection("Admin")
+
+local Label = AdminTab:CreateLabel("These are not my Admin Hubs by the way", 7713734565, Color3.new(0.082353, 0.000000, 0.145098), false) -- Title, Icon, Color, IgnoreTheme
+
+local Button = AdminTab:CreateButton({
+   Name = "∞Inf Yeild∞",
+   Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+   end,
+})
+
+local OtherScriptsTab = Window:CreateTab("💀OtherScripts💀", nil) -- Title, Image
+local OtherScriptsSection = OtherScriptsTab:CreateSection("OtherScripts")
+
+local Label = OtherScriptsTab:CreateLabel("These are not my scripts by the way", 7713734565, Color3.new(0.082353, 0.000000, 0.145098), false) -- Title, Icon, Color, IgnoreTheme
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "Rivals🔫",
+   Callback = function()
+G.Theme = "Jester"
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/Rivals.lua"))()
+   end,
+})
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "Lost Survival🔫",
+   Callback = function()
+    loadstring(request({Url='https://raw.githubusercontent.com/mainstreamed/amongus-hook/main/mainloader.lua'; Method='GET'}).Body)();
+   end,
+})
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "PanHub Survival Odyssey🔫",
+   Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Cheemos/PanHub/refs/heads/main/HubLoader"))()
+   end,
+})
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "PanHub Lootify💰",
+   Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Cheemos/PanHub/refs/heads/main/HubLoader"))()
+   end,
+})
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "PanHub Anime Lootify💰",
+   Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Cheemos/PanHub/refs/heads/main/HubLoader"))()
+   end,
+})
+
+local Button = OtherScriptsTab:CreateButton({
+   Name = "PanHub Mining Go!🔨",
+   Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Cheemos/PanHub/refs/heads/main/HubLoader"))()
+   end,
+})
+
+local OtherHubsTab = Window:CreateTab("💀OtherHubs💀", nil) -- Title, Image
+local OtherHubsSection = OtherHubsTab:CreateSection("OtherHubs")
+
+local Label = OtherHubsTab:CreateLabel("These are not my Hubs by the way", 7713734565, Color3.new(0.082353, 0.000000, 0.145098), false) -- Title, Icon, Color, IgnoreTheme
+
+local Button = OtherHubsTab:CreateButton({
+   Name = "EZhub😫",
+   Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/debug42O/Ez-Industries-Launcher-Data/master/Launcher.lua'),true))()
+   end,
+})
